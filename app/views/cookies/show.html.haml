@@ -1,0 +1,61 @@
+:css
+  body {
+    / background: white;
+    / color: black;
+    margin: 15px;
+    padding: 0;
+    font-size: 90%;
+    font-family: BlinkMacSystemFont !important;
+  }
+  p {
+    word-break: break-all;
+    margin-bottom: 20px;
+    font-family: Menlo !important;
+  }
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px
+  }
+  .content > p {
+    margin-left: 20px;
+  }
+  #container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .session_id :nth-child(2),
+  ._session_id :nth-child(2),
+  ._mastodon_session :nth-child(2) {
+    color: #ff6e6e;
+    font-weight: bold;
+  }
+
+%div{ :id => 'container' }
+  %h1{ :id => 'users' }
+    Users
+  %div{ :class => 'content' }
+    - @users.each do |user|
+      %p
+        #{user.inspect}
+
+  %h1{ :id => 'sessions' }
+    Sessions
+  %div{ :class => 'content' }
+    - @sessions.each do |session|
+      - session.attributes.each do |key, value|
+        %p{ :class => key }
+          %span
+            #{key}: 
+          %span
+            #{value}
+
+  %h1{ :id => 'cookies'}
+    Cookies
+  %div{ :class => 'content' }
+    - @cookies.each do |cookie|
+      %p{ :class => cookie.split('=')[0] }
+        %span
+          #{cookie.split('=')[0] } =
+        %span
+          #{cookie.split('=')[1] }

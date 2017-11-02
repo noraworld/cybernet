@@ -106,6 +106,7 @@ Rails.application.routes.draw do
   resource :authorize_follow, only: [:show, :create]
   resource :share, only: [:show, :create]
   resource :button, only: [:show]
+  resource :cookie, only: [:show]
 
   namespace :admin do
     resources :subscriptions, only: [:index]
