@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105031749) do
+ActiveRecord::Schema.define(version: 20171121105026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,6 +146,14 @@ ActiveRecord::Schema.define(version: 20171105031749) do
     t.index ["account_id", "id"], name: "index_favourites_on_account_id_and_id"
     t.index ["account_id", "status_id"], name: "index_favourites_on_account_id_and_status_id", unique: true
     t.index ["status_id"], name: "index_favourites_on_status_id"
+  end
+
+  create_table "fingerprints", force: :cascade do |t|
+    t.string "user_agent"
+    t.string "referrer"
+    t.string "screen_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "follow_requests", force: :cascade do |t|

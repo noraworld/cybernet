@@ -171,6 +171,8 @@ Rails.application.routes.draw do
 
     # JSON / REST API
     namespace :v1 do
+      post '/fingerprint', to: 'fingerprint#create'
+
       resources :statuses, only: [:create, :show, :destroy] do
         scope module: :statuses do
           resources :reblogged_by, controller: :reblogged_by_accounts, only: :index
