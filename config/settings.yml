@@ -40,7 +40,7 @@ defaults: &defaults
     must_be_following: false
     must_be_following_dm: false
   reserved_usernames:
-    - support
+    - admin
     - help
     - root
     - webmaster
